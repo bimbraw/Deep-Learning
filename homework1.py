@@ -43,18 +43,10 @@ def problem_1c (A, B, C):
         A = np.append(A, append_arr)
         A = A.reshape(len(A), 1)
     hadamard = A * B
-    print('This is hadamard shape -')
-    print(hadamard.shape)
-    print('This is the C.T shape -')
-    print((C.T).shape)
     rows = max(hadamard.shape[0], (C.T).shape[0])
     columns = max(hadamard.shape[1], (C.T).shape[1])
     padded_shape = (rows, columns)
-    print('padded shape -')
-    print(padded_shape)
     padded_base = np.zeros(padded_shape)
-    print('padded base -')
-    print(padded_base)
     padded_base_hadamard = padded_base
     padded_base_c_trans = padded_base
     padded_base_hadamard[:hadamard.shape[0], :hadamard.shape[1]] = hadamard
@@ -64,13 +56,31 @@ def problem_1c (A, B, C):
 print('The solution for problem 1c is -')
 print(problem_1c(A, B, C))
 
+x = np.array([1, 2.5, -2.7])
+x = x.reshape(len(x), 1)
+y = np.array([-2, 0.75])
+y = y.reshape(len(y), 1)
+
 def problem_1d (x, y):
-    return ...
+    soln = np.inner(x, y)
+    return soln
+
+print('The solution for problem 1d is -')
+print(problem_1d(x, y))
 
 def problem_1e (A):
-    return ...
+    rows = A.shape[0]
+    columns = A.shape[1]
+    return np.zeros((rows, columns))
+
+print('The solution for problem 1e is -')
+print(problem_1e(A))
+
+dim_sq_A = 3
+sq_A = np.random.rand(dim_sq_A, dim_sq_A)
 
 def problem_1f (A, x):
+
     return ...
 
 def problem_1g (A, x):
