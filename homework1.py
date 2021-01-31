@@ -8,9 +8,6 @@ A = A.reshape(len(A), 1)
 B = B.reshape(len(B), 1)
 C = C.reshape(len(C), 1)
 
-print(A)
-print(A.shape)
-
 len_val = np.absolute(len(A)-len(B))
 append_arr = np.zeros(len_val)
 if len(A) > len(B):
@@ -19,10 +16,6 @@ if len(A) > len(B):
 else:
     A = np.append(A, append_arr)
     A = A.reshape(len(A), 1)
-print('This is new A -')
-print(A)
-print('This is new B -')
-print(B)
 
 def problem_1a (A, B):
     add = np.add(A, B)
@@ -32,10 +25,14 @@ print('The solution for problem 1a is -')
 print(problem_1a(A, B))
 
 def problem_1b (A, B, C):
-    return (np.dot(A, B) - C)
+    dot_product = np.dot(A, B.T)
+    padded_shape = dot_product.shape
+    padded_base = np.zeros((padded_shape))
+    padded_base[:C.shape[0],:C.shape[1]] = C
+    return (dot_product - padded_base)
 
 print('The solution for problem 2a is -')
-problem_1b(A, B, C)
+print(problem_1b(A, B, C))
 
 def problem_1c (A, B, C):
     return ...
