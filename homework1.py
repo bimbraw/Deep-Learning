@@ -8,16 +8,15 @@ A = A.reshape(len(A), 1)
 B = B.reshape(len(B), 1)
 C = C.reshape(len(C), 1)
 
-len_val = np.absolute(len(A)-len(B))
-append_arr = np.zeros(len_val)
-if len(A) > len(B):
-    B = np.append(B, append_arr)
-    B = B.reshape(len(B), 1)
-else:
-    A = np.append(A, append_arr)
-    A = A.reshape(len(A), 1)
-
 def problem_1a (A, B):
+    len_val = np.absolute(len(A) - len(B))
+    append_arr = np.zeros(len_val)
+    if len(A) > len(B):
+        B = np.append(B, append_arr)
+        B = B.reshape(len(B), 1)
+    else:
+        A = np.append(A, append_arr)
+        A = A.reshape(len(A), 1)
     add = np.add(A, B)
     return add
 
@@ -31,11 +30,32 @@ def problem_1b (A, B, C):
     padded_base[:C.shape[0],:C.shape[1]] = C
     return (dot_product - padded_base)
 
-print('The solution for problem 2a is -')
+print('The solution for problem 1b is -')
 print(problem_1b(A, B, C))
 
 def problem_1c (A, B, C):
-    return ...
+    len_val = np.absolute(len(A) - len(B))
+    append_arr = np.zeros(len_val)
+    if len(A) > len(B):
+        B = np.append(B, append_arr)
+        B = B.reshape(len(B), 1)
+    else:
+        A = np.append(A, append_arr)
+        A = A.reshape(len(A), 1)
+    hadamard = A * B
+    padded_shape = hadamard.shape
+    print('padded shape -')
+    print(padded_shape)
+    padded_base = np.zeros((padded_shape))
+    print('padded base -')
+    print(padded_base)
+    C = C.T
+    print(C)
+    padded_base[:C.shape[0], :C.shape[1]] = C
+    return (hadamard + padded_base)
+
+print('The solution for problem 1c is -')
+print(problem_1c(A, B, C))
 
 def problem_1d (x, y):
     return ...
