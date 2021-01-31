@@ -79,9 +79,16 @@ print(problem_1e(A))
 dim_sq_A = 3
 sq_A = np.random.rand(dim_sq_A, dim_sq_A)
 
-def problem_1f (A, x):
+def problem_1f (sq_A, x):
+    if np.linalg.det(sq_A) != 0:
+        A_inv = np.linalg.inv(sq_A)
+    det = np.linalg.det(sq_A)
+    inverse = (1/det) * sq_A
+    return np.multiply(inverse, x)
 
-    return ...
+print('NOT THE RIGHT APPROACH!')
+print('The solution for problem 1f is -')
+print(problem_1f(sq_A, x))
 
 def problem_1g (A, x):
     return ...
