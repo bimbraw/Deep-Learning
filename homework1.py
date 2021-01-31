@@ -43,16 +43,23 @@ def problem_1c (A, B, C):
         A = np.append(A, append_arr)
         A = A.reshape(len(A), 1)
     hadamard = A * B
-    padded_shape = hadamard.shape
+    print('This is hadamard shape -')
+    print(hadamard.shape)
+    print('This is the C.T shape -')
+    print((C.T).shape)
+    rows = max(hadamard.shape[0], (C.T).shape[0])
+    columns = max(hadamard.shape[1], (C.T).shape[1])
+    padded_shape = (rows, columns)
     print('padded shape -')
     print(padded_shape)
-    padded_base = np.zeros((padded_shape))
+    padded_base = np.zeros(padded_shape)
     print('padded base -')
     print(padded_base)
-    C = C.T
-    print(C)
-    padded_base[:C.shape[0], :C.shape[1]] = C
-    return (hadamard + padded_base)
+    padded_base_hadamard = padded_base
+    padded_base_c_trans = padded_base
+    padded_base_hadamard[:hadamard.shape[0], :hadamard.shape[1]] = hadamard
+    padded_base_c_trans[:(C.T).shape[0], :(C.T).shape[1]] = C.T
+    return (padded_base_hadamard + padded_base_c_trans)
 
 print('The solution for problem 1c is -')
 print(problem_1c(A, B, C))
