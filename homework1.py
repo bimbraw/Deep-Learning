@@ -53,18 +53,36 @@ print('The solution for problem 1f is -')
 print(problem_1f(A, x))
 
 def problem_1g (A, x):
-    return ...
+    return np.transpose(np.linalg.solve(x, A))
+
+print('The solution for problem 1g is -')
+print(problem_1g(A, x))
+
+alpha = 0.1
 
 def problem_1h (A, alpha):
-    return ...
+    return A + (alpha * np.eye(A.shape[0], A.shape[1]))
 
+print('The solution for problem 1h is -')
+print(problem_1h(A, alpha))
+
+i = A.shape[0] - 1
+
+#maybe not right
 def problem_1i (A, i):
-    return ...
+    return np.sum(A[i,::2])
 
+print(A)
+print('The solution for problem 1i is -')
+print(problem_1i(A, i))
+
+#not completed
 def problem_1j (A, c, d):
     return ...
 
+#not completed
 def problem_1k (A, k):
+    eval, evec = np.linalg.eig(A)
     return ...
 
 def problem_1l (x, k, m, s):
