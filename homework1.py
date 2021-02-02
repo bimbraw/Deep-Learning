@@ -66,19 +66,43 @@ def problem_1h (A, alpha):
 print('The solution for problem 1h is -')
 print(problem_1h(A, alpha))
 
-i = A.shape[0] - 1
+A = np.random.rand(4,4)
+A = np.round(A)
+print('This is A -')
+print(A)
 
-#maybe not right
+i_val = A.shape[0] - 1
+print('This is i -')
+print(i_val)
+i = i_val
+
 def problem_1i (A, i):
     return np.sum(A[i,::2])
 
-print(A)
 print('The solution for problem 1i is -')
 print(problem_1i(A, i))
 
-#not completed
+A = np.random.rand(4,4)
+c = 0.05
+d = 0.75
+#nonzero_A = A[np.nonzero(A)]
+#print(nonzero_A)
+#updated_A = nonzero_A[(nonzero_A >= c) * (nonzero_A <= d)]
+#print(updated_A)
+#print((1/len(updated_A)) * np.sum(updated_A))
+
+#not considering the case when len(updated_A = 0)
 def problem_1j (A, c, d):
-    return ...
+    nonzero_A = A[np.nonzero(A)]
+    updated_A = nonzero_A[(nonzero_A >= c) * (nonzero_A <= d)]
+    return (1/len(updated_A)) * np.sum(updated_A)
+
+print('The solution for problem 1j is -')
+print(problem_1j(A, c, d))
+
+eval, evec = np.linalg.eig(A)
+print(eval)
+print(evec)
 
 #not completed
 def problem_1k (A, k):
