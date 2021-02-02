@@ -1,72 +1,42 @@
 import numpy as np
 
-A = np.array([1, 4, 6])
-B = np.array([4, 0.4, -4, 1])
-C = np.array([-5.2, 21.6])
+A = np.array([[1, 4, 6], [-9, 4, 5], [0.1, -0.1, 2]])
+B = np.array([[4, -1.1, 7], [2, -0.1, 8], [2, -1, 3]])
+C = np.array([[-5.2, 21.6, 3], [5, 6, 7], [-2.3, 1.5, 7]])
 
-A = A.reshape(len(A), 1)
-B = B.reshape(len(B), 1)
-C = C.reshape(len(C), 1)
+#A = A.reshape(len(A), 1)
+#B = B.reshape(len(B), 1)
+#C = C.reshape(len(C), 1)
 
 def problem_1a (A, B):
-    len_val = np.absolute(len(A) - len(B))
-    append_arr = np.zeros(len_val)
-    if len(A) > len(B):
-        B = np.append(B, append_arr)
-        B = B.reshape(len(B), 1)
-    else:
-        A = np.append(A, append_arr)
-        A = A.reshape(len(A), 1)
-    add = np.add(A, B)
-    return add
+    return A + B
 
 print('The solution for problem 1a is -')
 print(problem_1a(A, B))
 
 def problem_1b (A, B, C):
-    dot_product = np.dot(A, B.T)
-    padded_shape = dot_product.shape
-    padded_base = np.zeros((padded_shape))
-    padded_base[:C.shape[0],:C.shape[1]] = C
-    return (dot_product - padded_base)
+    return np.dot(A, B) - C
 
 print('The solution for problem 1b is -')
 print(problem_1b(A, B, C))
 
 def problem_1c (A, B, C):
-    len_val = np.absolute(len(A) - len(B))
-    append_arr = np.zeros(len_val)
-    if len(A) > len(B):
-        B = np.append(B, append_arr)
-        B = B.reshape(len(B), 1)
-    else:
-        A = np.append(A, append_arr)
-        A = A.reshape(len(A), 1)
     hadamard = A * B
-    rows = max(hadamard.shape[0], (C.T).shape[0])
-    columns = max(hadamard.shape[1], (C.T).shape[1])
-    padded_shape = (rows, columns)
-    padded_base = np.zeros(padded_shape)
-    padded_base_hadamard = padded_base
-    padded_base_c_trans = padded_base
-    padded_base_hadamard[:hadamard.shape[0], :hadamard.shape[1]] = hadamard
-    padded_base_c_trans[:(C.T).shape[0], :(C.T).shape[1]] = C.T
-    return (padded_base_hadamard + padded_base_c_trans)
+    return hadamard + C.T
 
 print('The solution for problem 1c is -')
 print(problem_1c(A, B, C))
 
-x = np.array([1, 2.5, -2.7])
-x = x.reshape(len(x), 1)
-y = np.array([-2, 0.75])
-y = y.reshape(len(y), 1)
+x = np.array([[1, 4], [-4, 1.1]])
+y = np.array([[1.12, .4], [-1.4, .1]])
 
 def problem_1d (x, y):
-    soln = np.inner(x, y)
-    return soln
+    return np.inner(x, y)
 
 print('The solution for problem 1d is -')
 print(problem_1d(x, y))
+
+A = np.random.rand(2, 2)
 
 def problem_1e (A):
     rows = A.shape[0]
@@ -76,19 +46,11 @@ def problem_1e (A):
 print('The solution for problem 1e is -')
 print(problem_1e(A))
 
-dim_sq_A = 3
-sq_A = np.random.rand(dim_sq_A, dim_sq_A)
+def problem_1f (A, x):
+    return np.linalg.solve(A, x)
 
-def problem_1f (sq_A, x):
-    if np.linalg.det(sq_A) != 0:
-        A_inv = np.linalg.inv(sq_A)
-    det = np.linalg.det(sq_A)
-    inverse = (1/det) * sq_A
-    return np.multiply(inverse, x)
-
-print('NOT THE RIGHT APPROACH!')
 print('The solution for problem 1f is -')
-print(problem_1f(sq_A, x))
+print(problem_1f(A, x))
 
 def problem_1g (A, x):
     return ...
