@@ -100,20 +100,60 @@ def problem_1j (A, c, d):
 print('The solution for problem 1j is -')
 print(problem_1j(A, c, d))
 
+'''
+k = 3
+
+print('Debugging eigen function -')
 eval, evec = np.linalg.eig(A)
 print(eval)
 print(evec)
 
+sorted_index_array = np.argsort(eval)
+print(sorted_index_array)
+sorted_array = eval[sorted_index_array]
+rslt = sorted_array[-k:]
+print(rslt)
+
+final=[]
+
+for i in range(k):
+    final[i,:] = np.append(final[i,:], evec[sorted_index_array[k]], axis=0)
+
+print(final)
+
 #not completed
 def problem_1k (A, k):
     eval, evec = np.linalg.eig(A)
+    sorted_index_array = np.argsort(eval)
+    sorted_array = eval[sorted_index_array]
+    rslt = sorted_array[-k:]
+
     return ...
+'''
+'''
+x = np.random.randn(2, 2)
+print(x)
+
+k = 4
+m = 5
+s = 3
 
 def problem_1l (x, k, m, s):
-    return ...
+    m_ones = m * np.ones(x.shape)
+    s_idty = s * np.eye(x.shape[0], k)
+    return np.random.multivariate_normal(s_idty, m_ones)
+    
+print('The solution for problem_1l -')
+print(problem_1l(x, k, m, s))
+'''
+A = np.random.randn(2,2)
+print(A)
 
 def problem_1m (A):
-    return ...
+    return np.random.permutation(A)
+
+print('The solution for 1m is -')
+print(problem_1m(A))
 
 def problem_1n (x):
     return ...
