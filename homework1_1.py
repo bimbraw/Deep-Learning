@@ -146,7 +146,7 @@ def problem_1l (x, k, m, s):
 print('The solution for problem_1l -')
 print(problem_1l(x, k, m, s))
 '''
-A = np.random.randn(2,2)
+A = np.random.randn(3,3)
 print(A)
 
 def problem_1m (A):
