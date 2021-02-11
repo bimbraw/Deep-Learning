@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Linear Regression using Stochastic Gradient Descent
 def batchloader(X, Y, batchsize=20):
     n = Y.shape[0]
     idx = np.random.choice(np.arange(n), size=batchsize, replace=False)
