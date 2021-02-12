@@ -8,11 +8,13 @@ def batchloader(X, Y, batchsize=20):
     Y_batch = Y[idx, :]
     return X_batch, Y_batch
 
+'''
 def computeRegularizedCost(X, Y, theta, w, alpha=0.2):
     fMSE = 0
     n = Y.shape[0]
     fMSE = (1 / (2 * n)) * (np.dot((np.dot(X, theta) - Y).transpose(), np.dot(X, theta) - Y)) + alpha * np.dot(w.T, w)
     return fMSE
+'''
 
 def computeMSE(X, Y, theta):
     fMSE = 0
