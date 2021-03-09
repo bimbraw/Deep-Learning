@@ -65,14 +65,16 @@ print(x_test.shape[0], 'test set')
 
 model = tf.keras.Sequential()
 # Must define the input shape in the first layer of the neural network
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, strides=1, padding='valid', activation='relu', input_shape=(28,28,1)))
+#model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, strides=1, padding='valid', activation='relu', input_shape=(28,28,1)))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, strides=1, padding='valid', input_shape=(28,28,1)))
 model.add(tf.keras.layers.MaxPooling2D(pool_size=(2,2), strides=2, padding='valid'))
-model.add(tf.keras.layers.ReLU(max_value=None, negative_slope=0, threshold=0))
+#model.add(tf.keras.layers.ReLU(max_value=None, negative_slope=0, threshold=0))
+model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(1024, activation='relu'))
-model.add(tf.keras.layers.ReLU(max_value=None, negative_slope=0, threshold=0))
+#model.add(tf.keras.layers.ReLU(max_value=None, negative_slope=0, threshold=0))
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
-model.add(tf.keras.layers.Softmax())
+#model.add(tf.keras.layers.Softmax())
 
 # Take a look at the model summary
 model.summary()
@@ -81,13 +83,9 @@ model.compile(loss='categorical_crossentropy',
              optimizer='adam',
              metrics=['accuracy'])
 
-checkpointer = ModelCheckpoint(filepath='model.weights.best.hdf5', verbose = 1, save_best_only=True)
-model.fit(x_train,
-         y_train,
-         batch_size=64,
-         epochs=1,
-         validation_data=(x_valid, y_valid),
-         callbacks=[checkpointer])
+# checkpointer = ModelCheckpoint(filepath='model.weights.best.hdf5', verbose = 1, save_best_only=True)
+model.fit(x_train, y_train, batch_size=64, epochs=1, validation_data=(x_valid, y_valid))
+# callbacks=[checkpointer])
 
 #Are these the correct weights? Validation?
 
